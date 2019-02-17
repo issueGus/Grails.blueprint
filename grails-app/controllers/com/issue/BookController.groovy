@@ -11,11 +11,9 @@ class BookController {
         if ( title == null || author == null ) {
             render "[ERROR] Title or author is NULL"
         } else {
-            println "[CALL] insertBook - with Title[$title] author[$author]"
+            log.debug "[CALL] insertBook - with Title[$title] author[$author]"
             Book saveBook = bookDataService.save(title, author, new Date())
-            println ""
-            println saveBook
-            println ""
+            log.debug "\n${saveBook} "
             render saveBook
         }
     }
@@ -27,7 +25,7 @@ class BookController {
             if (title==null || serialNumber==null) {
                 render "[ERROR] Title or serialNumber is NULL"
             } else {
-                println "[CALL] updateBook - Update book[$id] with title[$title], serialNumber[$serialNumber]"
+                log.debug "[CALL] updateBook - Update book[$id] with title[$title], serialNumber[$serialNumber]"
                 render bookDataService.update(id, title, serialNumber)
             }
         }
